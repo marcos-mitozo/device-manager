@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+import { Sequelize } from 'sequelize';
 
 const dbUsername = 'root'
 const dbPassword = 'root'
@@ -12,12 +12,26 @@ try {
     sequelize.authenticate();
     console.log('Connection has been established successfully.');
 } catch (error) {
-    console.error('Unable to connect to the database:', error);
+    console.log('Unable to connect to the database due to the following error: ')
+    console.error(error);
 }
 
-const db = {};
+async function synchronizeTables() {
+    await sequelize.sync({ alter: true })
+    .then(() => {
+        console.log('All the tables have been successfully synchronized!')
+    })
+    .catch(e => {
+        console.log('Unable to synchronize tables due to the following error: ')
+        console.log(e)
+    })
+}
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+synchronizeTables()
 
-module.exports = db;
+// const db = {};
+
+// db.sequelize = sequelize;
+// db.Sequelize = Sequelize;
+
+export default sequelize;
