@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize';
 
 import sequelize from '../database/connection.js';
+import { isTooLong, isLongEnough } from '../utils/fieldValidator.js';
 
 const Category = sequelize.define('category',
     {
@@ -9,16 +10,8 @@ const Category = sequelize.define('category',
             allowNull: false,
             unique: true,
             validate: {
-                isTooLong: ((name) => {
-                    if (name.length > 128) {
-                        throw new Error("Field 'name' has exceeded the maximum number of 128 characters!")
-                    }
-                }),
-                isLongEnough: ((name) => {
-                    if (name.length === 0) {
-                        throw new Error("Field 'name' should not be empty!")
-                    }
-                }),
+                isLongEnough: ((name) => { isLongEnough('name', name) }),
+                isTooLong: ((name) => { isTooLong('name', name, 16) }),
                 isUnique: (async (name) => {
                     return (Category.findOne({ where: { name } })
                         .then((category) => {

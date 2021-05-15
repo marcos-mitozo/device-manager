@@ -16,22 +16,4 @@ try {
     console.error(error);
 }
 
-async function synchronizeTables() {
-    await sequelize.sync({ alter: true })
-    .then(() => {
-        console.log('All the tables have been successfully synchronized!')
-    })
-    .catch(e => {
-        console.log('Unable to synchronize tables due to the following error: ')
-        console.log(e)
-    })
-}
-
-synchronizeTables()
-
-// const db = {};
-
-// db.sequelize = sequelize;
-// db.Sequelize = Sequelize;
-
 export default sequelize;
