@@ -1,8 +1,8 @@
 import express from 'express'
 import { json } from 'body-parser'
 
+import './models/device-category.js'
 import sequelize from './database/connection.js'
-import { Category, Device } from './models/device-category.js'
 import categoryRoutes from './routes/category.js'
 import deviceRoutes from './routes/device.js'
 
