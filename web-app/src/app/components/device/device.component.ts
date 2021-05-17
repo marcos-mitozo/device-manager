@@ -48,6 +48,7 @@ export class DeviceComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.getDevices()
     this.deviceService.listAll
   }
 
@@ -58,6 +59,10 @@ export class DeviceComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     this.serviceSubscribe.unsubscribe();
+  }
+
+  getDevices() {
+    this.deviceService.listAll()
   }
 
   openDialog(): void {
