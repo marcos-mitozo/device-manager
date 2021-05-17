@@ -1,5 +1,6 @@
 import express from 'express'
 import { json } from 'body-parser'
+import pkg from 'cors';
 
 import './models/device-category.js'
 import sequelize from './database/connection.js'
@@ -12,6 +13,7 @@ const hostname = '127.0.0.1'
 const port = 4000
 
 app.use(json())
+app.use(pkg())
 
 app.use('/category', categoryRoutes)
 app.use('/device', deviceRoutes)

@@ -11,7 +11,7 @@ const Category = sequelize.define('category',
             unique: true,
             validate: {
                 isLongEnough: ((name) => { isLongEnough('name', name) }),
-                isTooLong: ((name) => { isTooLong('name', name, 16) }),
+                isTooLong: ((name) => { isTooLong('name', name, 128) }),
                 isUnique: (async (name) => {
                     return (Category.findOne({ where: { name } })
                         .then((category) => {

@@ -1,0 +1,13 @@
+table#data-display-table {
+    width: 20rem;
+}
+
+.fixDialogForm {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.fixDialogActions {
+    margin-top: 8rem;
+}

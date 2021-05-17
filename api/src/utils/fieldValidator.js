@@ -6,7 +6,7 @@ export function isLongEnough(field, value) {
 
 export function isTooLong(field, value, limit) {
     if (value.length > limit) {
-        throw new Error(`Field ${field} has exceeded the maximum number of 128 characters!`)
+        throw new Error(`Field ${field} has exceeded the maximum number of ${limit} characters!`)
     }
 }
 

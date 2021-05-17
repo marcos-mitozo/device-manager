@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Add new category </h1>
+
+<form class="form-horizontal" (submit)="onSubmit()">
+    <div class="form-group" [formGroup]="form">
+
+        <div mat-dialog-content class="fixDialogForm">
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput [(ngModel)]="data.name" formControlName="name" maxlength="128" required />
+            </mat-form-field>
+            <div *ngIf="form.get('name')?.invalid && (form.get('name')?.touched || form.get('name')?.dirty)"
+                class="alert alert-danger">
+                <small>Name is required.</small>
+            </div>
+        </div>
+
+        <div mat-dialog-actions class="fixDialogActions">
+            <button mat-button (click)="onNoClick()">Cancel</button>
+            <button  type="submit" [disabled]="!form.valid" mat-raised-button color="primary" [mat-dialog-close]="data.name">
+                Confirm
+            </button>
+        </div>
+
+    </div>
+</form>
