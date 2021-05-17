@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize';
 
 import sequelize from '../database/connection.js';
 
-import { isLongEnough, isTooLong, isPositive } from '../utils/fieldValidator.js';
+import { isLongEnough, isTooLong, isPositive, isNumber } from '../utils/fieldValidator.js';
 
 const Device = sequelize.define('device',
     {
@@ -19,7 +19,8 @@ const Device = sequelize.define('device',
             allowNull: false,
             validate: {
                 isLongEnough: ((partNumber) => { isLongEnough('part number', partNumber) }),
-                isPositive: ((partNumber) => { isPositive('part number', partNumber, 16) })
+                isPositive: ((partNumber) => { isPositive('part number', partNumber, 16) }),
+                isNumber: ((partNumber) => { isNumber('Part number', partNumber) })
             }
         },
     }

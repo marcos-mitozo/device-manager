@@ -15,3 +15,9 @@ export function isPositive(field, value) {
         throw new Error (`The value for the field ${field} should be greater then 0!`)
     }
 }
+
+export function isNumber(field, value) {
+    if (typeof value !== 'number') {
+        throw new Error (`${field} must contain only numbers!`)
+    }
+}

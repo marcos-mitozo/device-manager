@@ -7,8 +7,9 @@ Category.hasMany(
     {
         foreignKey: {
             allowNull: true
-        }
-    })
+        },
+        onDelete: 'cascade'
+    }),
 
 Device.belongsTo(
     Category,

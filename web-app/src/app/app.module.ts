@@ -16,13 +16,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
-import { DeviceComponent } from './components/device/device.component';
+import { DeviceComponent, DeviceForm, DeviceDeleteConfirm } from './components/device/device.component';
 import { CategoryComponent, CategoryForm, CategoryDeleteConfirm } from './components/category/category.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
@@ -33,10 +34,12 @@ import { CategoryService } from './services/category.service';
   declarations: [
     AppComponent,
     ToolbarComponent,
-    DeviceComponent,
     CategoryComponent,
     CategoryForm,
-    CategoryDeleteConfirm
+    CategoryDeleteConfirm,
+    DeviceComponent,
+    DeviceForm,
+    DeviceDeleteConfirm
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { CategoryService } from './services/category.service';
     MatTableModule,
     MatDividerModule,
     MatInputModule,
+    MatSelectModule,
     MatFormFieldModule,
     FormsModule,
     MatDialogModule,
@@ -60,7 +64,7 @@ import { CategoryService } from './services/category.service';
     MatSortModule
   ],
   providers: [CategoryService],
-  entryComponents: [CategoryForm, CategoryDeleteConfirm],
+  entryComponents: [CategoryForm, CategoryDeleteConfirm, DeviceForm, DeviceDeleteConfirm],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

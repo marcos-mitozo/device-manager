@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, ViewChild, OnDestroy, AfterViewInit } from '
 import { Subscription } from 'rxjs';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CategoryService } from '../../services/category.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -25,7 +25,6 @@ export class CategoryComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
 
   category: Category = {}
-  name: string = ''
   categories: Category[] = [];
   displayedColumns: string[] = ['position', 'name', 'actions']
 
@@ -45,10 +44,6 @@ export class CategoryComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnInit(): void {
     this.categoryService.listAll()
-    this.serviceSubscribe = this.categoryService.categories$.subscribe(res => {
-      console.log(res)
-      this.dataSource.data = res;
-    })
   }
 
   ngAfterViewInit(): void {
@@ -67,8 +62,7 @@ export class CategoryComponent implements OnInit, OnDestroy, AfterViewInit {
   openDialog(): void {
     this.dialog.open(CategoryForm, {
       width: '500px',
-      height: '350px',
-      data: { name: this.name }
+      height: '350px'
     });
   }
 
@@ -98,18 +92,16 @@ export class CategoryComponent implements OnInit, OnDestroy, AfterViewInit {
 })
 export class CategoryForm {
 
-  form: FormGroup
+  form = this.formBuilder.group({
+    name: ['', Validators.required]
+  });
 
   constructor(
     public dialogRef: MatDialogRef<CategoryForm>,
     private formBuilder: FormBuilder,
     private categoryService: CategoryService,
     private _snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public data: Category) {
-    this.form = this.formBuilder.group({
-      name: new FormControl('', [Validators.required])
-    });
-  }
+    @Inject(MAT_DIALOG_DATA) public data: Category) { }
 
   onNoClick(): void {
     this.dialogRef.close();

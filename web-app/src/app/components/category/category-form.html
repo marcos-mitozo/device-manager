@@ -1,12 +1,12 @@
 <h1 mat-dialog-title>Add new category </h1>
 
-<form class="form-horizontal" (submit)="onSubmit()">
+<form class="form-horizontal" (ngSubmit)="onSubmit()">
     <div class="form-group" [formGroup]="form">
 
         <div mat-dialog-content class="fixDialogForm">
             <mat-form-field>
                 <mat-label>Name</mat-label>
-                <input matInput [(ngModel)]="data.name" formControlName="name" maxlength="128" required />
+                <input autocomplete="off" matInput formControlName="name" name="name" maxlength="128" required #name />
             </mat-form-field>
             <div *ngIf="form.get('name')?.invalid && (form.get('name')?.touched || form.get('name')?.dirty)"
                 class="alert alert-danger">
@@ -15,8 +15,8 @@
         </div>
 
         <div mat-dialog-actions class="fixDialogActions">
-            <button mat-button (click)="onNoClick()">Cancel</button>
-            <button  type="submit" [disabled]="!form.valid" mat-raised-button color="primary" [mat-dialog-close]="data.name">
+            <button mat-button (click)="onNoClick()" mat-dialog-close>Cancel</button>
+            <button  type="submit" [disabled]="!form.valid" mat-raised-button color="primary" [mat-dialog-close]="true">
                 Confirm
             </button>
         </div>

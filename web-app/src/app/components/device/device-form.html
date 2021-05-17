@@ -1,0 +1,67 @@
+<h1 mat-dialog-title>Add new device </h1>
+
+<form class="form-horizontal" (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="form-group">
+
+        <div mat-dialog-content class="fixDialogForm">
+
+            <mat-grid-list cols="2" rowHeight="2:1">
+
+                <mat-grid-tile>
+                    <div>
+                        <mat-form-field>
+                            <mat-label for="category">Category</mat-label>
+                            <mat-select formControlName="categoryId" name="categoryId" required #category>
+                                <mat-option *ngFor="let category of categories" [value]="category.id">
+                                    {{category.name}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div *ngIf="form.get('category')?.invalid && (form.get('category')?.touched || form.get('category')?.dirty)"
+                            class="alert alert-danger">
+                            <small>Category is required.</small>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <div>
+                        <mat-form-field>
+                            <mat-label for="color">Color</mat-label>
+                            <input autocomplete="off" matInput formControlName="color" name="color" maxlength="16" required #color />
+                        </mat-form-field>
+                        <div *ngIf="form.get('color')?.invalid && (form.get('color')?.touched || form.get('color')?.dirty)"
+                            class="alert alert-danger">
+                            <small>Color should contain letters only.</small>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <div>
+                        <mat-form-field>
+                            <mat-label for="partNumber">Part Number</mat-label>
+                            <input autocomplete="off" type="number" min="0" oninput="validity.valid||(value='');" matInput
+                                formControlName="partNumber" name="partNumber" required #partNumber />
+                        </mat-form-field>
+                        <div *ngIf="form.get('partNumber')?.invalid && (form.get('partNumber')?.touched || form.get('partNumber')?.dirty)"
+                            class="alert alert-danger">
+                            <small>Part Number is required.</small>
+                        </div>
+                    </div>
+                </mat-grid-tile>
+
+            </mat-grid-list>
+
+        </div>
+
+        <div mat-dialog-actions class="fixDialogActions">
+            <button mat-button (click)="onNoClick()" mat-dialog-close>Cancel</button>
+            <button type="submit" [disabled]="!form.valid" mat-raised-button color="primary"
+                [mat-dialog-close]="true">
+                Confirm
+            </button>
+        </div>
+
+    </div>
+</form>
