@@ -24,7 +24,7 @@ API_PORT=3000
 ```
 3.1 Now, we can copy/paste this file and rename the new file to '.env'  
 3.2 Change the variable values according to the local environment. The first 4 variables are all about to connecting with the database,
-the API_PORT variable is to determine in which port the server application will run. Eg: 'http://localhost:3000'
+the API_PORT variable is to determine in which port the server application will run. Eg: 'http://localhost:3000'  
 
 4. Execute the backend  
 4.1 In a terminal, go to the directory device-manager/api of the project and execute the following commands:  
