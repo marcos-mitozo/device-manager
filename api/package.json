@@ -1,5 +1,9 @@
 {
+    "main": "app.js",
     "type": "module",
+    "scripts": {
+        "start": "node app"
+      },    
     "devDependencies": {
         "@types/body-parser": "^1.19.0",
         "@types/cors": "^2.8.10",
