@@ -34,6 +34,7 @@ npm install
 node app.js
 ```
 The backend application should now be running in the adress 'http://localhost:3000', or in another port, according to the .env API_PORT variable.
+Please, note that node v14 or higher is required in order to the application to work properly!
 
 5. Execute the frontend  
 5.1 In a terminal, go to the directory device-manager/web-app of the project and execute the following commands:
