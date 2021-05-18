@@ -19,6 +19,13 @@ const port = process.env.API_PORT
 app.use(json())
 app.use(pkg())
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", 'GET,PUT,POST,DELETE');
+    app.use(pkg());
+    next();
+});
+
 app.use('/category', categoryRoutes)
 app.use('/device', deviceRoutes)
 

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import Category from '../models/category';
 
 @Injectable({
@@ -16,19 +16,13 @@ export class CategoryService {
     this.categories = this.listAll()
   }
 
-  save(values: any): string {
-
+  save(values: any) {
     this.http.post('http://localhost:4000/category', values)
       .subscribe({
-        next: (res: any) => {
+        next: () => {
           this.listAll()
-          return res.message
         },
-        error: (error?: any) => {
-          return error.message
-        }
       })
-    return ''
   }
 
   listAll(): Category[] {
@@ -48,6 +42,7 @@ export class CategoryService {
   }
 
   delete(id: number): string {
+    let message = ''
     this.http.delete(`http://localhost:4000/category/${id}`)
       .subscribe({
         next: (res: any) => {
@@ -56,9 +51,12 @@ export class CategoryService {
         },
         error: (error?: any) => {
           return error.message
+        },
+        complete: () => {
+          message = 'OKKKK'
         }
       })
-    return ''
+      return message
   }
 
 }

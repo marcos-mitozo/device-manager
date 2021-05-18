@@ -68,12 +68,10 @@ export class CategoryComponent implements OnInit, OnDestroy, AfterViewInit {
 
   delete(id: number) {
     const dialogRef = this.dialog.open(CategoryDeleteConfirm);
-    let feedbackMessage = ''
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        feedbackMessage = this.categoryService.delete(id);
-        this.openSnackBar(feedbackMessage)
+        this.categoryService.delete(id);
       }
     })
   }
@@ -108,8 +106,7 @@ export class CategoryForm {
   }
 
   onSubmit() {
-    const feedbackMessage = this.categoryService.save(this.form.value)
-    this.openSnackBar(feedbackMessage)
+    this.categoryService.save(this.form.value)
   }
 
   openSnackBar(message: string) {

@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -48,7 +48,6 @@ export class DeviceComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.getDevices()
     this.deviceService.listAll
   }
 
@@ -61,25 +60,19 @@ export class DeviceComponent implements OnInit, OnDestroy, AfterViewInit {
     this.serviceSubscribe.unsubscribe();
   }
 
-  getDevices() {
-    this.deviceService.listAll()
-  }
-
   openDialog(): void {
     this.dialog.open(DeviceForm, {
       width: '500px',
-      data: { }
+      data: {}
     });
   }
 
   delete(id: number) {
     const dialogRef = this.dialog.open(DeviceDeleteConfirm);
-    let feedbackMessage = ''
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        feedbackMessage = this.deviceService.delete(id);
-        this.openSnackBar(feedbackMessage)
+        this.deviceService.delete(id);
       }
     })
   }
@@ -126,8 +119,7 @@ export class DeviceForm implements OnInit {
   }
 
   onSubmit() {
-    const feedbackMessage = this.deviceService.save(this.form.value)
-    this.openSnackBar(feedbackMessage)
+    this.deviceService.save(this.form.value)
   }
 
   openSnackBar(message: string) {
