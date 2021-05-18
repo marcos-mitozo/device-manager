@@ -14,12 +14,14 @@ Database MySQL 8.0;
 2.1 Insert the local database credentials so the script will run and create a database named 'device_manager'  
 
 3. Also in the folder 'api', we will have a .env.example file in the following structure:  
+```
 DB_HOST=localhost
 DB_PORT=3306
 DB_USERNAME=root
 DB_PASSWORD=root
 
 API_PORT=3000
+```
 3.1 Now, we can copy/paste this file and rename the new file to '.env'  
 3.2 Change the variable values according to the local environment. The first 4 variables are all about to connecting with the database,
 the API_PORT variable is to determine in which port the server application will run. Eg: 'http://localhost:3000'
