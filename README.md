@@ -13,7 +13,7 @@ https://device-manager-web.web.app/
 Back-end (API) is running at the following address:
 https://device-manager-api.azurewebsites.net/  
 
-Note: It's possible to send GET, POST, and DELETE HTTP requests to '/device' or '/category' to test the CRUD operations (without UPDATE, according to the chalenge description).
+Note: It's possible to send GET, POST, and DELETE HTTP requests to '/device' or '/category' to test the CRUD operations (without UPDATE, according to the challenge's description).
 
 
 ## Step-by-step to locally run the app
