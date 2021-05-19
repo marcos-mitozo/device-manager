@@ -11,7 +11,6 @@ Back-end (API) is running at the following address:
 https://device-manager-api.azurewebsites.net/device
 
 Front-end of the application is running at:
-
 https://device-manager-web.web.app/
 
 
