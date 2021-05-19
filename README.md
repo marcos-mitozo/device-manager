@@ -7,11 +7,13 @@ Node v14.15.1;
 Database MySQL 8.0;  
 
 ## Cloud
-Back-end (API) is running at the following address:
-https://device-manager-api.azurewebsites.net/device
-
 Front-end of the application is running at:
 https://device-manager-web.web.app/
+
+Back-end (API) is running at the following address:
+https://device-manager-api.azurewebsites.net/  
+
+Note: It's possible to send GET, POST, and DELETE HTTP requests to '/device' or '/category' to test the CRUD operations (without UPDATE, according to the chalenge description).
 
 
 ## Step-by-step to locally run the app
