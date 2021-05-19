@@ -6,6 +6,18 @@ Angular v11.2.9;
 Node v14.15.1;  
 Database MySQL 8.0;  
 
+## Cloud
+Back-end (API) is running at the following address:
+```
+https://device-manager-api.azurewebsites.net/device
+```
+
+Front-end of the application is running at:
+
+```
+https://device-manager-web.web.app/
+```
+
 ## Step-by-step to locally run the app
 1. Clone the repository with the following command:
   git clone https://github.com/marcos-mitozo/device-manager.git
